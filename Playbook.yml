@@ -11,7 +11,7 @@
   community.docker.docker_image:
     name: devopsedu/webapp
     source: pull
-    # Select platform for pulling. If not specified, will pull whatever docker prefers.
+    
     pull:
       platform: amd64
   - name: build container image
