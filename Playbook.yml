@@ -12,13 +12,13 @@
     service: name=docker state=started
   - name: Pull default Docker image
       docker_image:
-        name: "{{ DevEdureka/myphpweb }}"
+        name: "{{ DevEdureka/eduphpproject }}"
         source: pull
   - name: Start the Container
       docker_container:
-        name: "{{ DevEdureka/myphpweb }}{{ item }}"
-        image: "{{ DevEdureka/myphpweb }}"
-        command: "{{ docker run --name mywebsitephp -itd -p 1800:80 DevEdureka/myphpweb }}"
+        name: "{{ DevEdureka/eduphpproject }}{{ item }}"
+        image: "{{ DevEdureka/eduphpproject }}"
+        command: "{{ docker run --name mywebsitephp -itd -p 1800:80 DevEdureka/eduphpproject }}"
         state: started
         published_port:
           - 1800:80
