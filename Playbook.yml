@@ -1,7 +1,11 @@
 ---
 - hosts: dev
-  become: True
+  become: true
   tasks:
+  - name: install pip
+    packege: 
+    name: phthon2-pip
+    state: present
   - name: install docker
     yum: name=docker state=present
   - name: start docker
