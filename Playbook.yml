@@ -2,22 +2,19 @@
 - hosts: dev
   become: True
   tasks:
-  - name: Install Docker Module for Python
-      pip:
-        name: docker
   - name: install docker
     yum: name=docker state=present
   - name: start docker
     service: name=docker state=started
   - name: Pull default Docker image
       docker_image:
-        name: "{{ devopsedu/webapp }}"
+        name: "{{ DevEdureka/myphpweb }}"
         source: pull
   - name: Start the Container
       docker_container:
-        name: "{{ devopsedu/webapp }}{{ item }}"
-        image: "{{ devopsedu/webapp }}"
-        command: "{{ default_container_command }}"
+        name: "{{ DevEdureka/myphpweb }}{{ item }}"
+        image: "{{ DevEdureka/myphpweb }}"
+        command: "{{ docker run --name mywebsitephp -itd -p 1800:80 DevEdureka/myphpweb }}"
         state: started
         published_port:
-          - 0.0.0.0:9000:9000
+          - 1800:80
